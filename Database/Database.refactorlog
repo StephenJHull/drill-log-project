@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="0215290f-527b-4dab-9938-1cf29501c42b" ChangeDateTime="03/20/2026 21:23:52">
+    <Property Name="ElementName" Value="[dbo].[DrillLog].[ShotId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DrillLog]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShotID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="747dc647-8309-4da5-bd78-284f1c47a2f4" ChangeDateTime="03/20/2026 23:17:59">
+    <Property Name="ElementName" Value="[dbo].[DrillType].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DrillType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Model" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d05b2ed3-d43f-482f-ac8a-b189b726258c" ChangeDateTime="03/20/2026 23:19:54">
+    <Property Name="ElementName" Value="[dbo].[Drill].[ModelType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Model" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f874d72c-217d-418d-8499-69313d84d9ab" ChangeDateTime="03/20/2026 23:20:43">
+    <Property Name="ElementName" Value="[dbo].[Drill].[Model]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModelNo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7af1e363-b625-4be1-a207-f4dfddea7e73" ChangeDateTime="03/20/2026 23:21:02">
+    <Property Name="ElementName" Value="[dbo].[DrillType].[Model]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DrillType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModelNo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4e1dc2fc-4d47-4d87-b529-a91365a28076" ChangeDateTime="03/20/2026 23:24:51">
+    <Property Name="ElementName" Value="[dbo].[Drill].[ModelNo]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModelMake" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="95aa752f-8424-47c2-91c8-60c6de7a192d" ChangeDateTime="03/20/2026 23:30:35">
+    <Property Name="ElementName" Value="[dbo].[Drill].[ModelMake]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModelName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e1a274d9-ba1c-42a2-8c82-2ad112d290e4" ChangeDateTime="03/20/2026 23:32:03">
+    <Property Name="ElementName" Value="[dbo].[Drill].[MachineId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MachineID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="90312a8b-a269-4bea-afa3-8e745be2b1ce" ChangeDateTime="03/20/2026 23:34:54">
+    <Property Name="ElementName" Value="[dbo].[Drilling].[DrillingID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drilling]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DrillingInstanceNo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5b4eb5c-844e-4eea-90be-71869c2df7ba" ChangeDateTime="03/20/2026 23:35:55">
+    <Property Name="ElementName" Value="[dbo].[Drilling].[MachineId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drilling]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MachineID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="16a74bf3-2e09-489d-999d-ca1575684745" ChangeDateTime="03/20/2026 23:49:17">
+    <Property Name="ElementName" Value="[dbo].[DrillPatter].[ShotId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DrillPatter]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShotID" />
+  </Operation>
+</Operations>
