@@ -3,4 +3,5 @@
     <Build />
     <Deploy />
   </Project>
+  <Project Path="WebApp/WebApp.csproj" Id="ec7c41f0-cb90-4199-9987-a7fb09ad7423" />
 </Solution>
