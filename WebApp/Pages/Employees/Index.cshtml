@@ -1,0 +1,59 @@
+@page
+@model WebApp.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h1>Employees</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Add New Employee</a>
+</p>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>SSN</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Job Title</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>License No</th>
+            <th>Supervisor</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model.Employees)
+        {
+            <tr>
+                <td>@emp.Ssn</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.JobTitle</td>
+                <td>@emp.PhoneNo</td>
+                <td>@emp.Email</td>
+                <td>@emp.LicenseNo</td>
+                <td>
+                    @if (emp.SupervisorSsnNavigation != null)
+                    {
+                        @($"{emp.SupervisorSsnNavigation.FirstName} {emp.SupervisorSsnNavigation.LastName}")
+                    }
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@emp.Ssn" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="Delete" asp-route-id="@emp.Ssn" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

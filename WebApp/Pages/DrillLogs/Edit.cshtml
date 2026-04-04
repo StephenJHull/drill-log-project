@@ -1,0 +1,66 @@
+@page "{id:int}"
+@model WebApp.Pages.DrillLogs.EditModel
+@{
+    ViewData["Title"] = "Edit Drill Log";
+}
+
+<h1>Edit Drill Log</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="DrillLog.ShotId" />
+
+            <div class="mb-3">
+                <label class="form-label">Shot ID</label>
+                <input value="@Model.DrillLog.ShotId" class="form-control" disabled />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DrillLog.QuarryName" class="form-label">Quarry</label>
+                <select asp-for="DrillLog.QuarryName" class="form-select" asp-items="Model.QuarryList">
+                    <option value="">-- Select Quarry --</option>
+                </select>
+                <span asp-validation-for="DrillLog.QuarryName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DrillLog.DrillerSsn" class="form-label">Driller</label>
+                <select asp-for="DrillLog.DrillerSsn" class="form-select" asp-items="Model.DrillerList">
+                    <option value="">-- Select Driller --</option>
+                </select>
+                <span asp-validation-for="DrillLog.DrillerSsn" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DrillLog.TimeBegan" class="form-label">Time Began</label>
+                <input asp-for="DrillLog.TimeBegan" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DrillLog.TimeBegan" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DrillLog.TimeLastSaved" class="form-label">Time Last Saved</label>
+                <input asp-for="DrillLog.TimeLastSaved" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DrillLog.TimeLastSaved" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DrillLog.TimeSubmitted" class="form-label">Time Submitted</label>
+                <input asp-for="DrillLog.TimeSubmitted" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DrillLog.TimeSubmitted" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

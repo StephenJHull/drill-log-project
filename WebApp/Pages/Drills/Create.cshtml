@@ -1,0 +1,57 @@
+@page
+@model WebApp.Pages.Drills.CreateModel
+@{
+    ViewData["Title"] = "Add Drill";
+}
+
+<h1>Add New Drill</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Drill.MachineId" class="form-label">Machine ID</label>
+                <input asp-for="Drill.MachineId" class="form-control" />
+                <span asp-validation-for="Drill.MachineId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Drill.ModelName" class="form-label">Model</label>
+                <select asp-for="Drill.ModelName" class="form-select" asp-items="Model.ModelList">
+                    <option value="">-- Select Model --</option>
+                </select>
+                <span asp-validation-for="Drill.ModelName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Drill.Age" class="form-label">Age (years)</label>
+                <input asp-for="Drill.Age" class="form-control" type="number" />
+                <span asp-validation-for="Drill.Age" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Drill.TotalHours" class="form-label">Total Hours</label>
+                <input asp-for="Drill.TotalHours" class="form-control" type="number" />
+                <span asp-validation-for="Drill.TotalHours" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Drill.Rebuilts" class="form-label">Number of Rebuilds</label>
+                <input asp-for="Drill.Rebuilts" class="form-control" type="number" />
+                <span asp-validation-for="Drill.Rebuilts" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,56 @@
+@page "{id}"
+@model WebApp.Pages.Quarries.EditModel
+@{
+    ViewData["Title"] = "Edit Quarry";
+}
+
+<h1>Edit Quarry</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Quarry.Name" />
+
+            <div class="mb-3">
+                <label class="form-label">Quarry Name</label>
+                <input value="@Model.Quarry.Name" class="form-control" disabled />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quarry.Location" class="form-label">Location</label>
+                <input asp-for="Quarry.Location" class="form-control" />
+                <span asp-validation-for="Quarry.Location" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quarry.Company" class="form-label">Company</label>
+                <input asp-for="Quarry.Company" class="form-control" />
+                <span asp-validation-for="Quarry.Company" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quarry.RockType" class="form-label">Rock Type</label>
+                <input asp-for="Quarry.RockType" class="form-control" />
+                <span asp-validation-for="Quarry.RockType" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quarry.AnnualProduction" class="form-label">Annual Production (tons)</label>
+                <input asp-for="Quarry.AnnualProduction" class="form-control" type="number" />
+                <span asp-validation-for="Quarry.AnnualProduction" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
