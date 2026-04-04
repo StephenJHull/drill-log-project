@@ -1,0 +1,50 @@
+@page
+@model WebApp.Pages.Drills.IndexModel
+@{
+    ViewData["Title"] = "Drills";
+}
+
+<h1>Drills</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Add New Drill</a>
+</p>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Machine ID</th>
+            <th>Model</th>
+            <th>Manufacturer</th>
+            <th>Age (yrs)</th>
+            <th>Total Hours</th>
+            <th>Rebuilds</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var drill in Model.Drills)
+        {
+            <tr>
+                <td>@drill.MachineId</td>
+                <td>@drill.ModelName</td>
+                <td>@drill.ModelNameNavigation?.Manufacture</td>
+                <td>@drill.Age</td>
+                <td>@drill.TotalHours.ToString("N0")</td>
+                <td>@drill.Rebuilts</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@drill.MachineId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="Delete" asp-route-id="@drill.MachineId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,77 @@
+@page
+@model WebApp.Pages.Employees.CreateModel
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<h1>Add New Employee</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.Ssn" class="form-label">SSN</label>
+                <input asp-for="Employee.Ssn" class="form-control" />
+                <span asp-validation-for="Employee.Ssn" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.FirstName" class="form-label">First Name</label>
+                <input asp-for="Employee.FirstName" class="form-control" />
+                <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.LastName" class="form-label">Last Name</label>
+                <input asp-for="Employee.LastName" class="form-control" />
+                <span asp-validation-for="Employee.LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.JobTitle" class="form-label">Job Title</label>
+                <select asp-for="Employee.JobTitle" class="form-select" asp-items="Model.JobTitleList">
+                    <option value="">-- Select Job Title --</option>
+                </select>
+                <span asp-validation-for="Employee.JobTitle" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.PhoneNo" class="form-label">Phone Number</label>
+                <input asp-for="Employee.PhoneNo" class="form-control" />
+                <span asp-validation-for="Employee.PhoneNo" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.Email" class="form-label">Email</label>
+                <input asp-for="Employee.Email" class="form-control" type="email" />
+                <span asp-validation-for="Employee.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.LicenseNo" class="form-label">License Number</label>
+                <input asp-for="Employee.LicenseNo" class="form-control" />
+                <span asp-validation-for="Employee.LicenseNo" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Employee.SupervisorSsn" class="form-label">Supervisor</label>
+                <select asp-for="Employee.SupervisorSsn" class="form-select" asp-items="Model.SupervisorList">
+                    <option value="">-- No Supervisor --</option>
+                </select>
+                <span asp-validation-for="Employee.SupervisorSsn" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

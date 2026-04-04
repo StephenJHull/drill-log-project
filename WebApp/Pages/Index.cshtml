@@ -1,10 +1,49 @@
-﻿@page
+@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Digital Drill Log</h1>
+    <p class="lead">Web Application for Recording, Sharing, and Accessing Blast-hole Drilling Conditions</p>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Employees</h5>
+                <p class="card-text">Manage drillers, blasters, and managers.</p>
+                <a asp-page="/Employees/Index" class="btn btn-primary">View Employees</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Quarries</h5>
+                <p class="card-text">Manage quarry sites and locations.</p>
+                <a asp-page="/Quarries/Index" class="btn btn-primary">View Quarries</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Drill Logs</h5>
+                <p class="card-text">View and create drill log records.</p>
+                <a asp-page="/DrillLogs/Index" class="btn btn-primary">View Drill Logs</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Drills</h5>
+                <p class="card-text">Manage drill machines and equipment.</p>
+                <a asp-page="/Drills/Index" class="btn btn-primary">View Drills</a>
+            </div>
+        </div>
+    </div>
 </div>
