@@ -1,0 +1,16 @@
+@page
+@model WebApp.Pages.Reports.IndexModel
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h1>Reports</h1>
+
+<div class="list-group">
+    <a asp-page="/Reports/FeetPerDrill" class="list-group-item list-group-item-action">
+        Number of feet drilled per drill in the last year
+    </a>
+    <a asp-page="/Reports/BrokenMaterialByQuarry" class="list-group-item list-group-item-action">
+        Average feet of broken material at the top of each hole for every quarry
+    </a>
+</div>
