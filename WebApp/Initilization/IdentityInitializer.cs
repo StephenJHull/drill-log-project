@@ -44,12 +44,32 @@ namespace WebApp.Initilization
 
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
+            var roles = identityUsers.SelectMany(x => x.Roles).Distinct();
+
+            await AddRolesAsync(roles, roleManager);
+
             foreach (var identityUser in identityUsers)
             {
                 await AddUserAndRolesAsync(identityUser, userManager, roleManager);
             }
 
             _fileSystem.File.Delete(filePath);
+        }
+
+        private async Task AddRolesAsync(IEnumerable<string> roles, RoleManager<IdentityRole> roleManager)
+        {
+            var existingRoles = roleManager.Roles.Select(x => x.Name).ToList();
+
+            var rolesToAdd = roles.Where(x => !existingRoles.Contains(x)).ToList();
+
+            foreach (var role in rolesToAdd)
+            {
+                var result = await roleManager.CreateAsync(new IdentityRole { Name = role });
+                if (!result.Succeeded)
+                {
+                    throw new Exception($"The {role} role was not created.");
+                }
+            }
         }
 
         private async Task AddUserAndRolesAsync(UserModel identityUser, UserManager<IdentityUser> userManager, 
@@ -65,6 +85,7 @@ namespace WebApp.Initilization
                 {
                     Email = email,
                     UserName = email,
+                    EmailConfirmed = true,
                 };
 
                 var result = await userManager.CreateAsync(user, identityUser.Password);
@@ -81,7 +102,11 @@ namespace WebApp.Initilization
                 var rolesToAdd = identityUser.Roles;
                 foreach (var roleToAdd in rolesToAdd)
                 {
-                    await roleManager.CreateAsync(new IdentityRole { Name = roleToAdd });
+                    var result = await userManager.AddToRoleAsync(user, roleToAdd);
+                    if (!result.Succeeded)
+                    {
+                        throw new Exception($"The {email} user was not added to the {roleToAdd} role.");
+                    }
                 }
             }
         }
