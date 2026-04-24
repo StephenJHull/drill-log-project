@@ -1,0 +1,34 @@
+@page
+@model WebApp.Pages.Reports.BrokenMaterialByQuarryModel
+@{
+    ViewData["Title"] = "Average Broken Material by Quarry";
+}
+
+<h1>Average Broken Material at Top of Hole by Quarry</h1>
+
+@if (Model.QuarryStats.Count == 0)
+{
+    <div class="alert alert-info">No drill hole data was found.</div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Quarry</th>
+                <th>Holes Included</th>
+                <th>Average Broken Material (ft)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stat in Model.QuarryStats)
+            {
+                <tr>
+                    <td>@stat.QuarryName</td>
+                    <td>@stat.HoleCount</td>
+                    <td>@stat.AverageBrokenMaterialFeet.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
