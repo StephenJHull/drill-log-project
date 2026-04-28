@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -6,6 +7,7 @@ using WebApp.Entities;
 
 namespace WebApp.Pages.DrillLogs
 {
+    [Authorize (Roles = "Admin,Driller,Blaster")]
     public class CreateModel : PageModel
     {
         private readonly DrillLogContext _context;

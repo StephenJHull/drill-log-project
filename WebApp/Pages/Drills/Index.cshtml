@@ -6,10 +6,12 @@
 
 <h1>Drills</h1>
 
-<p>
-    <a asp-page="Create" class="btn btn-success">Add New Drill</a>
-</p>
-
+@if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+{
+    <p>
+        <a asp-page="Create" class="btn btn-success">Add New Drill</a>
+    </p>
+}
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,7 +29,10 @@
             <th>Age (yrs)</th>
             <th>Total Hours</th>
             <th>Rebuilds</th>
-            <th>Actions</th>
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
+                <th>Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -40,10 +45,13 @@
                 <td>@drill.Age</td>
                 <td>@drill.TotalHours.ToString("N0")</td>
                 <td>@drill.Rebuilts</td>
-                <td>
-                    <a asp-page="Edit" asp-route-id="@drill.MachineId" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-page="Delete" asp-route-id="@drill.MachineId" class="btn btn-sm btn-danger">Delete</a>
-                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                {
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@drill.MachineId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-page="Delete" asp-route-id="@drill.MachineId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                }
             </tr>
         }
     </tbody>

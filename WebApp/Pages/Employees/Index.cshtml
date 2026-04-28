@@ -6,9 +6,13 @@
 
 <h1>Employees</h1>
 
-<p>
-    <a asp-page="Create" class="btn btn-success">Add New Employee</a>
-</p>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-page="Create" class="btn btn-success">Add New Employee</a>
+    </p>
+}
 
 @if (TempData["SuccessMessage"] != null)
 {
@@ -29,7 +33,10 @@
             <th>Email</th>
             <th>License No</th>
             <th>Supervisor</th>
-            <th>Actions</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -49,10 +56,13 @@
                         @($"{emp.SupervisorSsnNavigation.FirstName} {emp.SupervisorSsnNavigation.LastName}")
                     }
                 </td>
-                <td>
-                    <a asp-page="Edit" asp-route-id="@emp.Ssn" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-page="Delete" asp-route-id="@emp.Ssn" class="btn btn-sm btn-danger">Delete</a>
-                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Driller") || User.IsInRole("Blaster"))
+                {
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@emp.Ssn" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-page="Delete" asp-route-id="@emp.Ssn" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                }
             </tr>
         }
     </tbody>

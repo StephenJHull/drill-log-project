@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Entities;
 
 namespace WebApp.Pages.Drills
 {
+    [Authorize(Roles = "Admin,Manager,Driller")]
     public class IndexModel : PageModel
     {
         private readonly DrillLogContext _context;

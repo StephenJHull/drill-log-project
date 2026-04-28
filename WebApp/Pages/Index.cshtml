@@ -9,41 +9,65 @@
     <p class="lead">Web Application for Recording, Sharing, and Accessing Blast-hole Drilling Conditions</p>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Employees</h5>
-                <p class="card-text">Manage drillers, blasters, and managers.</p>
-                <a asp-page="/Employees/Index" class="btn btn-primary">View Employees</a>
+<div class="row mt-5">
+    @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Driller") || User.IsInRole("Blaster"))
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Drill Logs</h5>
+                    <p class="card-text">View and create drill log records.</p>
+                    <a asp-page="/DrillLogs/Index" class="btn btn-primary">View Drill Logs</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Quarries</h5>
-                <p class="card-text">Manage quarry sites and locations.</p>
-                <a asp-page="/Quarries/Index" class="btn btn-primary">View Quarries</a>
+    }
+    @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Blaster"))
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Quarries</h5>
+                    <p class="card-text">Manage quarry sites and locations.</p>
+                    <a asp-page="/Quarries/Index" class="btn btn-primary">View Quarries</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Drill Logs</h5>
-                <p class="card-text">View and create drill log records.</p>
-                <a asp-page="/DrillLogs/Index" class="btn btn-primary">View Drill Logs</a>
+    }
+    @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Driller"))
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Drills</h5>
+                    <p class="card-text">Manage drill machines and equipment.</p>
+                    <a asp-page="/Drills/Index" class="btn btn-primary">View Drills</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Drills</h5>
-                <p class="card-text">Manage drill machines and equipment.</p>
-                <a asp-page="/Drills/Index" class="btn btn-primary">View Drills</a>
+    }
+    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+    {
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Reports</h5>
+                    <p class="card-text">View reports.</p>
+                    <a asp-page="/Reports/Index" class="btn btn-primary">View Reports</a>
+                </div>
             </div>
         </div>
-    </div>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Employees</h5>
+                    <p class="card-text">Manage drillers, blasters, and managers.</p>
+                    <a asp-page="/Employees/Index" class="btn btn-primary">View Employees</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

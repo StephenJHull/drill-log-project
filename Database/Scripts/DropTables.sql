@@ -10,3 +10,13 @@ DROP TABLE IF EXISTS Quarry;
 DROP TABLE IF EXISTS DrillType;
 
 DROP TABLE IF EXISTS EmployeeRole;
+
+DROP TABLE IF EXISTS dbo.__EFMigrationsHistory;
+DROP TABLE IF EXISTS [dbo].[AspNetRoleClaims]
+DROP TABLE IF EXISTS [dbo].[AspNetUserRoles]
+DROP TABLE IF EXISTS [dbo].[AspNetRoles]
+DROP TABLE IF EXISTS [dbo].[AspNetUserTokens]
+DROP TABLE IF EXISTS [dbo].[AspNetUserClaims]
+DROP TABLE IF EXISTS [dbo].[AspNetUserLogins]
+
+DROP TABLE IF EXISTS [dbo].[AspNetUsers]
