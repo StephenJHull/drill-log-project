@@ -21,12 +21,12 @@ public class FeetPerDrillModel : PageModel
 
     public async Task OnGetAsync()
     {
-        ReportEndDate = DateTime.UtcNow.Date;
+        ReportEndDate = DateTime.UtcNow.Date.AddDays(1);
         ReportStartDate = ReportEndDate.AddYears(-1);
 
         // Pull raw rows from SQL first, then compute report stats in memory.
         var drillHoles = await _context.DrillHoles
-            .Where(h => h.StartTime >= ReportStartDate && h.StartTime <= ReportEndDate)
+            .Where(h => h.StartTime >= ReportStartDate && h.StartTime < ReportEndDate)
             .Include(h => h.Machine)
             .AsNoTracking()
             .ToListAsync();
