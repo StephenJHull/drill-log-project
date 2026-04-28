@@ -1,0 +1,102 @@
+@page "{id:int}"
+@model WebApp.Pages.DrillLogs.ViewModel
+@{
+    ViewData["Title"] = "Drill Log View";
+}
+
+<h1>Drill Log View</h1>
+<hr />
+
+<div class="mb-3">
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-page="Edit" asp-route-id="@Model.DrillLog?.ShotId" class="btn btn-primary ms-2">Edit</a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">Shot Layout</div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Shot ID</dt>
+            <dd class="col-sm-9">@Model.DrillLog?.ShotId</dd>
+
+            <dt class="col-sm-3">Quarry</dt>
+            <dd class="col-sm-9">@Model.DrillLog?.QuarryName</dd>
+
+            <dt class="col-sm-3">Driller</dt>
+            <dd class="col-sm-9">@Model.DrillerName</dd>
+
+            <dt class="col-sm-3">Time Began</dt>
+            <dd class="col-sm-9">@Model.DrillLog?.TimeBegan</dd>
+
+            <dt class="col-sm-3">Pattern Type</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.ShotType</dd>
+
+            <dt class="col-sm-3">Blaster</dt>
+            <dd class="col-sm-9">@Model.BlasterName</dd>
+
+            <dt class="col-sm-3">Hole Diameter</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.HoleDiameter</dd>
+
+            <dt class="col-sm-3">Burden</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.Burden</dd>
+
+            <dt class="col-sm-3">Spacing</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.Spacing</dd>
+
+            <dt class="col-sm-3">Face Height</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.FaceHeight</dd>
+
+            <dt class="col-sm-3">Sub Drill</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.SubDrill</dd>
+
+            <dt class="col-sm-3">Number of Holes</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.NoHoles</dd>
+
+            <dt class="col-sm-3">Design Date</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.DesignDate</dd>
+
+            <dt class="col-sm-3">Shot Date</dt>
+            <dd class="col-sm-9">@Model.DrillPattern?.ShotDate</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">Drill Hole Data</div>
+    <div class="card-body table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Hole #</th>
+                    <th>Degrees</th>
+                    <th>Broken Material</th>
+                    <th>Competent Rock</th>
+                    <th>Total Depth</th>
+                    <th>Water Depth</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.DrillHoles != null && Model.DrillHoles.Any())
+                {
+                    foreach (var h in Model.DrillHoles)
+                    {
+                        <tr>
+                            <td>@h.HoleNo</td>
+                            <td>@h.Degrees</td>
+                            <td>@h.BrokenMaterial</td>
+                            <td>@h.CompetentRock</td>
+                            <td>@h.TotalDepth</td>
+                            <td>@h.WaterDepth</td>
+                            <td>@h.Notes</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="7" class="text-center">No hole data available.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

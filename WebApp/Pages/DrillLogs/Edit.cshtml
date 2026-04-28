@@ -7,60 +7,223 @@
 <h1>Edit Drill Log</h1>
 <hr />
 
-<div class="row">
-    <div class="col-md-6">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" asp-for="DrillLog.ShotId" />
-
-            <div class="mb-3">
-                <label class="form-label">Shot ID</label>
-                <input value="@Model.DrillLog.ShotId" class="form-control" disabled />
+    @* ===== SHOT LAYOUT SECTION ===== *@
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Shot Layout</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Shot ID</label>
+                        <input asp-for="ShotId" class="form-control" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="QuarryName" class="form-label">Quarry</label>
+                        <select asp-for="QuarryName" class="form-select" asp-items="Model.QuarryList">
+                            <option value="">-- Select Quarry --</option>
+                        </select>
+                        <span asp-validation-for="QuarryName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="DrillerSsn" class="form-label">Driller</label>
+                        <select asp-for="DrillerSsn" class="form-select" asp-items="Model.DrillerList">
+                            <option value="">-- Select Driller --</option>
+                        </select>
+                        <span asp-validation-for="DrillerSsn" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BlasterSsn" class="form-label">Blaster (Person Designated to Layout Shot)</label>
+                        <select asp-for="BlasterSsn" class="form-select" asp-items="Model.BlasterList">
+                            <option value="">-- Select Blaster --</option>
+                        </select>
+                        <span asp-validation-for="BlasterSsn" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ShotType" class="form-label">Type of Shot</label>
+                        <select asp-for="ShotType" class="form-select" asp-items="Model.ShotTypeList">
+                            <option value="">-- Select --</option>
+                        </select>
+                        <span asp-validation-for="ShotType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="DateLaidOut" class="form-label">Date Laid Out</label>
+                        <input asp-for="DateLaidOut" class="form-control" type="date" />
+                        <span asp-validation-for="DateLaidOut" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="DateOfShot" class="form-label">Date of Shot</label>
+                        <input asp-for="DateOfShot" class="form-control" type="date" />
+                        <span asp-validation-for="DateOfShot" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="HoleDiameter" class="form-label">Hole Diameter</label>
+                                <input asp-for="HoleDiameter" class="form-control" type="number" step="0.1" />
+                                <span asp-validation-for="HoleDiameter" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="Burden" class="form-label">Burden</label>
+                                <input asp-for="Burden" class="form-control" type="number" step="0.1" />
+                                <span asp-validation-for="Burden" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label asp-for="Spacing" class="form-label">Spacing</label>
+                                <input asp-for="Spacing" class="form-control" type="number" step="0.1" />
+                                <span asp-validation-for="Spacing" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label asp-for="FaceHeight" class="form-label">Face Height</label>
+                                <input asp-for="FaceHeight" class="form-control" type="number" step="0.1" />
+                                <span asp-validation-for="FaceHeight" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label asp-for="SubDrill" class="form-label">Sub Drill</label>
+                                <input asp-for="SubDrill" class="form-control" type="number" step="0.1" />
+                                <span asp-validation-for="SubDrill" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NumberOfHoles" class="form-label">Number of Holes</label>
+                        <input asp-for="NumberOfHoles" class="form-control" type="number" min="1" max="91" id="numHoles" />
+                        <span asp-validation-for="NumberOfHoles" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="MachineId" class="form-label">Drill Machine</label>
+                        <select asp-for="MachineId" class="form-select" asp-items="Model.MachineList">
+                            <option value="">-- Select Drill --</option>
+                        </select>
+                        <span asp-validation-for="MachineId" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label asp-for="DrillLog.QuarryName" class="form-label">Quarry</label>
-                <select asp-for="DrillLog.QuarryName" class="form-select" asp-items="Model.QuarryList">
-                    <option value="">-- Select Quarry --</option>
-                </select>
-                <span asp-validation-for="DrillLog.QuarryName" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="DrillLog.DrillerSsn" class="form-label">Driller</label>
-                <select asp-for="DrillLog.DrillerSsn" class="form-select" asp-items="Model.DrillerList">
-                    <option value="">-- Select Driller --</option>
-                </select>
-                <span asp-validation-for="DrillLog.DrillerSsn" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="DrillLog.TimeBegan" class="form-label">Time Began</label>
-                <input asp-for="DrillLog.TimeBegan" class="form-control" type="datetime-local" />
-                <span asp-validation-for="DrillLog.TimeBegan" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="DrillLog.TimeLastSaved" class="form-label">Time Last Saved</label>
-                <input asp-for="DrillLog.TimeLastSaved" class="form-control" type="datetime-local" />
-                <span asp-validation-for="DrillLog.TimeLastSaved" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="DrillLog.TimeSubmitted" class="form-label">Time Submitted</label>
-                <input asp-for="DrillLog.TimeSubmitted" class="form-control" type="datetime-local" />
-                <span asp-validation-for="DrillLog.TimeSubmitted" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <input type="submit" value="Save Changes" class="btn btn-primary" />
-                <a asp-page="Index" class="btn btn-secondary">Cancel</a>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+
+    @* ===== GENERATE HOLES BUTTON ===== *@
+    <div class="mb-3">
+        <button type="button" class="btn btn-secondary" id="generateHolesBtn">
+            Generate Hole Table
+        </button>
+        <small class="text-muted ms-2">Set "Number of Holes" above, then click to generate the entry table.</small>
+    </div>
+
+    @* ===== DRILL HOLES TABLE ===== *@
+    <div class="card mb-4" id="holesCard" style="display:none;">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Drill Hole Data</h5>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table table-bordered table-sm" id="holesTable">
+                <thead class="table-secondary">
+                    <tr>
+                        <th style="width:60px">Hole #</th>
+                        <th style="width:80px">Degree</th>
+                        <th style="width:120px">Unconsolidated Material at Collar</th>
+                        <th style="width:100px">Competent Rock</th>
+                        <th style="width:90px">Total Depth</th>
+                        <th style="width:90px">Water Depth</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="holesBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" value="Save Changes" class="btn btn-primary btn-lg" />
+        <a asp-page="Index" class="btn btn-secondary btn-lg ms-2">Cancel</a>
+    </div>
+</form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Populate holes table when page loads if holes are present
+        function buildHolesFromModel() {
+            var holes = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Holes));
+            var numHoles = holes ? holes.length : 0;
+            if (numHoles === 0) return;
+
+            var tbody = document.getElementById('holesBody');
+            tbody.innerHTML = '';
+
+            for (var i = 0; i < numHoles; i++) {
+                var h = holes[i];
+                var row = document.createElement('tr');
+                row.innerHTML =
+                    '<td class="text-center fw-bold">' + h.HoleNo +
+                    '<input type="hidden" name="Holes[' + i + '].HoleNo" value="' + h.HoleNo + '" />' +
+                    '</td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].Degrees" value="' + (h.Degrees ?? 0) + '" /></td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].BrokenMaterial" value="' + (h.BrokenMaterial ?? '') + '" /></td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].CompetentRock" value="' + (h.CompetentRock ?? '') + '" /></td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].TotalDepth" value="' + (h.TotalDepth ?? '') + '" /></td>' +
+                    '<td><input type="number" class="form-control form-control-sm" name="Holes[' + i + '].WaterDepth" value="' + (h.WaterDepth ?? '') + '" /></td>' +
+                    '<td><input type="text" class="form-control form-control-sm" name="Holes[' + i + '].Notes" value="' + (h.Notes ?? '') + '" /></td>';
+                tbody.appendChild(row);
+            }
+
+            document.getElementById('holesCard').style.display = 'block';
+        }
+
+        document.getElementById('generateHolesBtn').addEventListener('click', function () {
+            var numHoles = parseInt(document.getElementById('numHoles').value);
+            if (!numHoles || numHoles < 1) {
+                alert('Please enter the number of holes first.');
+                return;
+            }
+            if (numHoles > 91) {
+                alert('Maximum 91 holes allowed.');
+                return;
+            }
+
+            var tbody = document.getElementById('holesBody');
+            tbody.innerHTML = '';
+
+            for (var i = 0; i < numHoles; i++) {
+                var row = document.createElement('tr');
+                row.innerHTML =
+                    '<td class="text-center fw-bold">' + (i + 1) +
+                    '<input type="hidden" name="Holes[' + i + '].HoleNo" value="' + (i + 1) + '" />' +
+                    '</td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].Degrees" value="0" /></td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].BrokenMaterial" /></td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].CompetentRock" /></td>' +
+                    '<td><input type="number" step="0.1" class="form-control form-control-sm" name="Holes[' + i + '].TotalDepth" /></td>' +
+                    '<td><input type="number" class="form-control form-control-sm" name="Holes[' + i + '].WaterDepth" /></td>' +
+                    '<td><input type="text" class="form-control form-control-sm" name="Holes[' + i + '].Notes" /></td>';
+                tbody.appendChild(row);
+            }
+
+            document.getElementById('holesCard').style.display = 'block';
+            // Scroll to the table
+            document.getElementById('holesCard').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Initialize existing holes
+        window.addEventListener('DOMContentLoaded', function () {
+            buildHolesFromModel();
+        });
+    </script>
 }

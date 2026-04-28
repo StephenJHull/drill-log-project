@@ -9,8 +9,8 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Driller") || User.IsInRole("Blaster"))
 {
     <p>
-        <a asp-page="Create" class="btn btn-success">Create New Drill Log</a>
-        <a asp-page="NewDrillLog" class="btn btn-primary ms-2">New Complete Drill Log</a>
+        @*<a asp-page="Create" class="btn btn-success">Create New Drill Log</a>*@
+        <a asp-page="NewDrillLog" class="btn btn-primary ms-2">Create New Drill Log</a>
     </p>
 }
 @if (TempData["SuccessMessage"] != null)
@@ -49,6 +49,7 @@
                 @if (User.IsInRole("Admin") || User.IsInRole("Driller") || User.IsInRole("Blaster"))
                 {
                     <td>
+                        <a asp-page="View" asp-route-id="@log.ShotId" class="btn btn-sm btn-info me-1">View</a>
                         <a asp-page="Edit" asp-route-id="@log.ShotId" class="btn btn-sm btn-warning">Edit</a>
                         <a asp-page="Delete" asp-route-id="@log.ShotId" class="btn btn-sm btn-danger">Delete</a>
                     </td>
