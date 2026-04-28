@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApp.Entities;
 
 namespace WebApp.Pages.Quarries
 {
+    [Authorize(Roles = "Admin,Manager")]
     public class DeleteModel : PageModel
     {
         private readonly DrillLogContext _context;
